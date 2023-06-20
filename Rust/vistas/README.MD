@@ -1,2 +1,3 @@
 # How to use
-´´´cargo run´´´ in /vistas
+> cargo run 
+in /vistas
