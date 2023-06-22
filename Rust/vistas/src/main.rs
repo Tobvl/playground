@@ -1,5 +1,6 @@
 use iced::{Element, Sandbox, Settings, Length};
-use iced::widget::{Column, Button, Container, Row};
+use iced::widget::{Column, Button, Container, Row, TextInput};
+//use iced::window;
 
 mod pagina_principal;
 use pagina_principal::PaginaPrincipal;
@@ -16,14 +17,13 @@ struct Vistas {
     pagina_secundaria: PaginaSecundaria
 }
 
-
 #[derive(Debug, Clone, Copy)]
 pub enum Vista {
     Principal,
     Secundaria
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 pub enum Messages {
     CambioPagina(Vista)
 }
@@ -44,9 +44,11 @@ impl Sandbox for Vistas{
         String::from("Multiples ventanas")
     }
 
-    fn update (&mut self, mensaje: Self::Message){
-        match mensaje{
-            Messages::CambioPagina(pagina) => {self.pagina_actual = pagina;}
+    fn update (&mut self, message: Self::Message){
+        match message{
+            Messages::CambioPagina(pagina) => {
+                self.pagina_actual = pagina;
+                println!("Se ha presionado un botón")}
         }
     }
 
@@ -56,7 +58,7 @@ impl Sandbox for Vistas{
                 .padding(15)
                 .width(Length::Fill)
                 .height(Length::from(60))
-                .push(Button::new("Principal").on_press(Messages::CambioPagina(Vista::Principal)))
+                .push(Container::new(Button::new("Principal").on_press(Messages::CambioPagina(Vista::Principal))))
                 .push(Button::new("Secundaria").on_press(Messages::CambioPagina(Vista::Secundaria)))
                 .spacing(10));
 

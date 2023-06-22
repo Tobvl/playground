@@ -1,5 +1,5 @@
 use iced::{Element, Length};
-use iced::widget::{Column, Container, Text};
+use iced::widget::{Column, Container, Text, TextInput};
 
 use crate::Messages;
 
@@ -12,6 +12,8 @@ impl PaginaPrincipal {
     
     pub fn view(&self) -> Element<Messages> {
         println!("PAGINA PRINCIPAL");
+        let value = "Texto";
+
         let label = Text::new("Pagina PRINCIPAL");
         let columna = Column::new().push(label).spacing(4);
         let pagina = Container::new(columna)
