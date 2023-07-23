@@ -15,3 +15,5 @@ Cargo.lock
 
 # IJ Files
 /.idea/
+*/.idea/
+*/.idea/*
